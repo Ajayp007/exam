@@ -147,7 +147,7 @@ class _HomescreenState extends State<Homescreen> {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.pushNamed(context, 'product');
+                            Navigator.pushNamed(context, 'product',arguments: e);
                           },
                           child: SizedBox(
                             height: 300,
