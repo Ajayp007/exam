@@ -29,7 +29,7 @@ class _HomescreenState extends State<Homescreen> {
                 Navigator.pushNamed(context, 'cartscreen');
               },
               child: const Icon(
-                Icons.notifications,
+                Icons.add_shopping_cart_outlined,
                 size: 28,
                 color: Colors.white,
               ),
@@ -140,82 +140,94 @@ class _HomescreenState extends State<Homescreen> {
                 ),
                 Visibility(
                   visible: burger,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: product
-                        .map((e) => Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, 'product',arguments: e);
-                          },
-                          child: SizedBox(
-                            height: 300,
-                            width: 150,
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  "${e['image']}",
-                                  height: 200,
-                                ),
-                                Text(
-                                  "${e['chat']}",
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  "${e['about']}",
-                                  style: const TextStyle(
-                                      color: Colors.white),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "\$${e['price']}",
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: product
+                          .map((e) => Row(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(context, 'product',
+                                          arguments: e);
+                                    },
+                                    child: Container(
+                                      height: 300,
+                                      width: 150,
+                                      margin: const EdgeInsets.symmetric(
+                                          vertical: 20, horizontal: 20),
+                                      child: Column(
+                                        children: [
+                                          Image.asset(
+                                            "${e['image']}",
+                                            height: 200,
+                                          ),
+                                          Text(
+                                            "${e['chat']}",
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            "${e['about']}",
+                                            style: const TextStyle(
+                                                color: Colors.white),
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "\$${e['price']}",
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 18),
+                                              ),
+                                              const Icon(Icons.add,
+                                                  color: Colors.white),
+                                            ],
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                    const Icon(Icons.add,
-                                        color: Colors.white),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ))
-                        .toList(),
+                                  ),
+                                ],
+                              ))
+                          .toList(),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
                 Visibility(
                   visible: pizza,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: pizza_
-                        .map((e) => Row(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: pizza_
+                          .map(
+                            (e) => Row(
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    Navigator.pushNamed(context, 'product');
+                                    Navigator.pushNamed(context, 'product',
+                                        arguments: e);
                                   },
-                                  child: SizedBox(
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 20, horizontal: 20),
                                     height: 300,
                                     width: 150,
                                     child: Column(
                                       children: [
                                         Image.asset(
                                           "${e['image']}",
-                                          height: 200,
+                                          height: 100,
                                         ),
                                         Text(
                                           "${e['chat']}",
@@ -251,8 +263,10 @@ class _HomescreenState extends State<Homescreen> {
                                   ),
                                 ),
                               ],
-                            ))
-                        .toList(),
+                            ),
+                          )
+                          .toList(),
+                    ),
                   ),
                 ),
               ],
