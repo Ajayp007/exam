@@ -14,6 +14,14 @@ class _CartScreenState extends State<CartScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey.shade900,
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text("Your Order",style: TextStyle(color: Colors.white),),
+          leading: InkWell(onTap: () {
+            Navigator.pop(context);
+          },child: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
+          backgroundColor: Colors.grey.shade900,
+        ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
